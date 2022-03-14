@@ -1,9 +1,3 @@
-# if animal is v
-
-animals = ["butterfly", "fly", "whale", "parrot"]
-weights = [.0005, .000007, 300000, 3.52]
-vertebrates = ["hamster", "crocodile", "parrot", "whale"]
-pure_vertebrate = 0
 
 def biggest_vertebrate(animals, weights, vertebrates):
     final_verdict = " "
@@ -32,8 +26,47 @@ def biggest_vertebrate(animals, weights, vertebrates):
 
     return final_verdict
 
+def within_weights(animals, weights, weightLimit):
+    weight_range = []
+    for i in range(len(animals)):
+        if(weights[i] <= weightLimit):
+            animals_list = animals[i]
+            weight_range.append(animals_list)
 
-print(biggest_vertebrate(["butterfly", "fly"], [0.0005, 0.000007], ["hamster","human", "mouse"]))
+    return weight_range
+
+
+def any_adjacent_vertebrates(animals, vertebrates):
+    isVertebrate = False
+    for i in range(len(animals)-1):
+        for j in range(len(vertebrates)):
+            if(animals[i == vertebrates[j]]):
+                isVertebrate = True
+                break
+        if (isVertebrate == True):
+            isVertebrate = False
+            for j in range(len(vertebrates)):
+                if (animals[i + 1] == vertebrates[j]):
+                    return True
+    return False
+
+
+def count_weights(weight_list):
+    ways = 0
+    for i in range(len(weight_list)-1):
+        for j in range(i+1, len(weight_list)):
+            sum = weight_list[i] + weight_list[j]
+            for k in range(len(weight_list)):
+                if(weight_list[k] == sum):
+                    ways += 1
+                    break
+    return ways
+
+
+
+
+
+
 
 
 
